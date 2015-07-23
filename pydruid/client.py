@@ -594,3 +594,13 @@ class PyDruid:
         self.validate_query(valid_parts, kwargs)
         self.build_query(kwargs)
         return self.__post(self.query_dict)
+
+    def search(self, **kwargs):
+        self.query_type = 'search'
+        valid_parts = [
+            'datasource', 'granularity', 'filter', 'searchDimensions',
+            'query', 'sort', 'intervals'
+        ]
+        self.validate_query(valid_parts, kwargs)
+        self.build_query(kwargs)
+        return self.__post(self.query_dict)
